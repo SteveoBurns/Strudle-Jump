@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float movementSpeed = 10f;
     private float movement = 0;
     Animator animator;
+    [SerializeField] private Renderer filling;
 
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class Character : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        filling.material.color = Random.ColorHSV(0, 1, 1, 1);
     }
 
     // Update is called once per frame
