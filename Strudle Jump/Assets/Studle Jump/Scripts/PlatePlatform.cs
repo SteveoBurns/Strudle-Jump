@@ -10,13 +10,15 @@ public class PlatePlatform : MonoBehaviour
     {
         if (collision.relativeVelocity.y <= 0)
         {
-
+            Animator animator = collision.collider.GetComponent<Animator>();
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 Vector2 velocity = rb.velocity;
                 velocity.y = jumpForce;
                 rb.velocity = velocity;
+                animator.SetTrigger("Jump");
+                Destroy(this.gameObject);
             }
         }
     }
