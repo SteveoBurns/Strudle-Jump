@@ -5,6 +5,9 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
+    public string strudelName;
+    [SerializeField] private TMP_InputField nameInput;
+
     [SerializeField] private Transform character;
 
     private float score;
@@ -28,5 +31,7 @@ public class Score : MonoBehaviour
 
 
         scoreText.text = "Score:" + Mathf.RoundToInt(score).ToString();
+
+        strudelName = nameInput.text;
     }
 }
