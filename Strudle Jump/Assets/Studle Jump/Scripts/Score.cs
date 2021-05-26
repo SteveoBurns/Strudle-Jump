@@ -13,6 +13,9 @@ public class Score : MonoBehaviour
     private float score;
     [SerializeField] private TMP_Text scoreText;
 
+    public List<HighScore> highScores = new List<HighScore>();
+    public HighScore theScore;
+
     private void Start()
     {
         score = 0;
@@ -33,5 +36,14 @@ public class Score : MonoBehaviour
         scoreText.text = "Score:" + Mathf.RoundToInt(score).ToString();
 
         strudelName = nameInput.text;
+    }
+
+    public void SetHighScore()
+    {
+        theScore.name = strudelName;
+        theScore.score = score;
+
+
+        highScores.Add(theScore);
     }
 }

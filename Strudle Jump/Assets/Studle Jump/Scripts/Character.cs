@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     private float movement = 0;
     Animator animator;
     [SerializeField] private Renderer filling;
+    [SerializeField] private GameObject winningPanel;
 
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -31,5 +32,13 @@ public class Character : MonoBehaviour
         Vector2 velocity = rb.velocity;
         velocity.x = movement;
         rb.velocity = velocity;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Winning Plate")
+        {
+            winningPanel.SetActive(true);
+        }
     }
 }

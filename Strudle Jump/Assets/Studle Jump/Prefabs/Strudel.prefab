@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   filling: {fileID: 6650865417997069630}
+  winningPanel: {fileID: 0}
 --- !u!95 &8507881274192325479
 Animator:
   serializedVersion: 3
