@@ -7,4 +7,10 @@ public class HighScore
 {
     public float score;
     public string name;
+
+    public HighScore(Score _score)
+    {
+        score = _score.score;
+        name = _score.name;
+    }
 }

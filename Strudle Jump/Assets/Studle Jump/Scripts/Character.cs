@@ -38,6 +38,7 @@ public class Character : MonoBehaviour
     {
         if(collision.gameObject.tag == "Winning Plate")
         {
+            
             winningPanel.SetActive(true);
         }
     }

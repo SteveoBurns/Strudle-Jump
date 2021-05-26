@@ -9,8 +9,12 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private Slider volumeSlider;
 
+    [SerializeField] private TMP_Text scorePrefab;
+    
+    public void DisplayHighScore()
+    {
 
-
+    }
 
     public void StartGame()
     {
