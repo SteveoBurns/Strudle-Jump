@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class SaveSystem : MonoBehaviour
@@ -19,11 +20,14 @@ public class SaveSystem : MonoBehaviour
 
     public void DisplayHighScore()
     {
-        //null check this
-        foreach (TMP_Text _highscore in scoreContent)
+        // have to clear the scores in the content view
+
+        foreach (Transform child in scoreContent)
         {
-            Destroy(_highscore);
+            Destroy(child.gameObject);
         }
+        
+        
         foreach (HighScore _highscore in loadedGameData.highScores)
         {
             TMP_Text scoreText = Instantiate(scorePrefab, scoreContent);
