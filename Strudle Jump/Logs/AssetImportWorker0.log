@@ -706,3 +706,11 @@ System memory in use after: 87.1 MB.
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2338.
 Total: 2.376900 ms (FindLiveObjects: 0.225000 ms CreateObjectMapping: 0.090100 ms MarkObjects: 2.045100 ms  DeleteObjects: 0.015800 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 592.364296 seconds.
+  path: Assets/Studle Jump/Art/roses-vintage-wallpaper-background.jpg
+  artifactKey: Guid(82ad24ba6730f7149b235d593e219749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Studle Jump/Art/roses-vintage-wallpaper-background.jpg using Guid(82ad24ba6730f7149b235d593e219749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9965919dd82b04000ce8fbf7affad975') in 0.147432 seconds
+  Import took 0.151869 seconds .
+
