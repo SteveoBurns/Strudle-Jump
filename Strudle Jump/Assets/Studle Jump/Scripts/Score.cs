@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
     public float score;
     [SerializeField] private TMP_Text scoreText;
 
-    public List<HighScore> highScores = new List<HighScore>();
+    public static List<HighScore> highScores = new List<HighScore>();
     public HighScore theScore;
 
     private void Start()

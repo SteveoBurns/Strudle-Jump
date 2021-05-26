@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using TMPro;
 
+
 public class SaveSystem : MonoBehaviour
 {
     private string FilePath => Application.streamingAssetsPath + "/gameData";
@@ -13,11 +14,16 @@ public class SaveSystem : MonoBehaviour
 
     [SerializeField] private TMP_Text scorePrefab;
     [SerializeField] private Transform scoreContent;
-
+    
    
 
     public void DisplayHighScore()
     {
+        //null check this
+        foreach (TMP_Text _highscore in scoreContent)
+        {
+            Destroy(_highscore);
+        }
         foreach (HighScore _highscore in loadedGameData.highScores)
         {
             TMP_Text scoreText = Instantiate(scorePrefab, scoreContent);
@@ -34,7 +40,7 @@ public class SaveSystem : MonoBehaviour
 
     public void SaveBinary()
     {
-        gameData = new GameData(FindObjectOfType<Score>().highScores);
+        gameData = new GameData(Score.highScores);
 
         // This Opens the river between RAM and the file
         using (FileStream stream = new FileStream(FilePath + ".save", FileMode.OpenOrCreate)) // using "using" closes the stream automatically.
