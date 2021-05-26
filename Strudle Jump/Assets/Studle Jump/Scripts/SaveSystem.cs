@@ -3,11 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using TMPro;
 
 public class SaveSystem : MonoBehaviour
 {
     private string FilePath => Application.streamingAssetsPath + "/gameData";
     private GameData gameData;
+    private GameData loadedGameData;
+
+    [SerializeField] private TMP_Text scorePrefab;
+    [SerializeField] private Transform scoreContent;
+
+   
+
+    public void DisplayHighScore()
+    {
+        foreach (HighScore _highscore in loadedGameData.highScores)
+        {
+            TMP_Text scoreText = Instantiate(scorePrefab, scoreContent);
+            scoreText.text = _highscore.name + " - " + _highscore.score.ToString("0");
+        }
+    }
 
 
     private void Start()
@@ -42,8 +58,8 @@ public class SaveSystem : MonoBehaviour
             // Like creating the boat that will carry the data from one point to another
             BinaryFormatter formatter = new BinaryFormatter();
             // Transports the data from the specified file to the RAM, like unfreezing ice into water, making it movable again.
-            gameData = formatter.Deserialize(stream) as GameData;
-            gameData.Sort();
+            loadedGameData = formatter.Deserialize(stream) as GameData;
+            loadedGameData.Sort();
         }
     }
 }
