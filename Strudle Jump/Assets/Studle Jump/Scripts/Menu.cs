@@ -10,8 +10,21 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private Slider volumeSlider;
     
     private bool isPaused = false;
+    private float loadedVolume;
+
+    private void Awake()
+    {
+        if(PlayerPrefs.HasKey("volume"))
+        {
+            loadedVolume = PlayerPrefs.GetFloat("volume");
+            VolumeSlider(loadedVolume);
+            volumeSlider.value = loadedVolume;
+            Debug.Log("loaded player prefs volume");
+        }
+    }
 
     private void Update()
     {
@@ -23,8 +36,11 @@ public class Menu : MonoBehaviour
             Play();
     }
 
+    
+
     public void VolumeSlider(float _volume)
     {
+        PlayerPrefs.SetFloat("volume", _volume);
         _volume = VolumeRemap(_volume);
         audioMixer.SetFloat("masterVolume", _volume);
     }

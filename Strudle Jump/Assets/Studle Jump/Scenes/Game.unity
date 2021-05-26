@@ -1153,6 +1153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 3d435224f9ad0b6409869703dc2bd2ee, type: 2}
   pausePanel: {fileID: 934790128}
+  volumeSlider: {fileID: 141158904963163111}
 --- !u!114 &504713018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &934790129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2584,7 +2585,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 300}
+  m_SizeDelta: {x: 650.059, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &952309477
 GameObject:
@@ -4154,6 +4155,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1251511d711b2254ca9f302c051f5e52, type: 3}
+--- !u!114 &141158904963163111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 141158904332537548, guid: 1251511d711b2254ca9f302c051f5e52, type: 3}
+  m_PrefabInstance: {fileID: 141158904963163110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1861615476031870270
 PrefabInstance:
   m_ObjectHideFlags: 0

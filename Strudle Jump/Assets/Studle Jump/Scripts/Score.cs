@@ -5,11 +5,13 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
+    [Header("Character")]
     public string strudelName;
     [SerializeField] private TMP_InputField nameInput;
 
     [SerializeField] private Transform character;
 
+    [Header("Score")]
     public float score;
     [SerializeField] private TMP_Text scoreText;
 
