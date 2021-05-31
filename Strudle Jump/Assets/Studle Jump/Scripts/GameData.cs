@@ -13,6 +13,9 @@ public class GameData
         highScores = _highscores;
     }
 
+    /// <summary>
+    /// Sorts the highscores list
+    /// </summary>
     public void Sort()
     {
         highScores = highScores.OrderBy(_score => _score.score).ToList();

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    [Header("The Character to follow")]
     public Transform target;
 
 
@@ -12,6 +13,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null)
         {
+            // Moving the camera, but only upwards. Don't want it to keep dropping with the character.
             if (target.position.y > transform.position.y)
             {
 

@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class Menu : MonoBehaviour
 {
+    [Header("Menu Attributes")]
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Slider volumeSlider;
@@ -17,6 +18,7 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
+        // Loading saved volume through PlayerPrefs
         if(PlayerPrefs.HasKey("volume"))
         {
             loadedVolume = PlayerPrefs.GetFloat("volume");
@@ -28,6 +30,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
+        // Pause game with esc key
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             PauseGame();
@@ -36,8 +39,11 @@ public class Menu : MonoBehaviour
             Play();
     }
 
-    
 
+    /// <summary>
+    /// Takes the slider value, remaps it for use with the master volume scale
+    /// </summary>
+    #region Volume Slider
     public void VolumeSlider(float _volume)
     {
         PlayerPrefs.SetFloat("volume", _volume);
@@ -48,7 +54,11 @@ public class Menu : MonoBehaviour
     {
         return -40 + (value - 0) * (20 - -40) / (1 - 0);
     }
+    #endregion
 
+    /// <summary>
+    /// Pauses game and time scale
+    /// </summary>
     public void PauseGame()
     {
         pausePanel.SetActive(true);
@@ -66,6 +76,9 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    /// <summary>
+    /// Plays game and alters time scale
+    /// </summary>
     public void Play()
     {
         pausePanel.SetActive(false);
@@ -73,12 +86,15 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Quits game from build and editor
+    /// </summary>
     public void QuitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        application.Quit();
+        Application.Quit();
 #endif
     }
 

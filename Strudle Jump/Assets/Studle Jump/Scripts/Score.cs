@@ -8,7 +8,6 @@ public class Score : MonoBehaviour
     [Header("Character")]
     public string strudelName;
     [SerializeField] private TMP_InputField nameInput;
-
     [SerializeField] private Transform character;
 
     [Header("Score")]
@@ -20,6 +19,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
+        // Sets score
         score = 0;
     }
 
@@ -28,18 +28,23 @@ public class Score : MonoBehaviour
     {
         if (character != null)
         {
+            // Sets the score to be the highest the character has been
             if (character.position.y > score)
             {
                 score = character.position.y;
             }
         }
 
-
+        // Updates score text
         scoreText.text = "Score:" + Mathf.RoundToInt(score).ToString();
 
+        // Sets the name.
         strudelName = nameInput.text;
     }
 
+    /// <summary>
+    /// Sets the score and adds it to the list of highscores
+    /// </summary>
     public void SetHighScore()
     {
         theScore.name = strudelName;

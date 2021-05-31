@@ -4,15 +4,17 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using TMPro;
-using UnityEngine.UI;
+
 
 
 public class SaveSystem : MonoBehaviour
 {
+    // Save Variables
     private string FilePath => Application.streamingAssetsPath + "/gameData";
     private GameData gameData;
     private GameData loadedGameData;
 
+    [Header("Score Display Ojects")]
     [SerializeField] private TMP_Text scorePrefab;
     [SerializeField] private Transform scoreContent;
     
@@ -20,14 +22,13 @@ public class SaveSystem : MonoBehaviour
 
     public void DisplayHighScore()
     {
-        // have to clear the scores in the content view
-
+        // Clearing the scores in the content view
         foreach (Transform child in scoreContent)
         {
             Destroy(child.gameObject);
         }
         
-        
+        // Adding the scores into the content view
         foreach (HighScore _highscore in loadedGameData.highScores)
         {
             TMP_Text scoreText = Instantiate(scorePrefab, scoreContent);
@@ -38,10 +39,14 @@ public class SaveSystem : MonoBehaviour
 
     private void Start()
     {
+        // Checking if the path exists and if not creating it
         if (!Directory.Exists(Application.streamingAssetsPath))
             Directory.CreateDirectory(Application.streamingAssetsPath);
     }
 
+    /// <summary>
+    /// Binary saving function
+    /// </summary>
     public void SaveBinary()
     {
         gameData = new GameData(Score.highScores);
@@ -69,6 +74,7 @@ public class SaveSystem : MonoBehaviour
             BinaryFormatter formatter = new BinaryFormatter();
             // Transports the data from the specified file to the RAM, like unfreezing ice into water, making it movable again.
             loadedGameData = formatter.Deserialize(stream) as GameData;
+            // Sorts the loaded game data
             loadedGameData.Sort();
         }
     }
